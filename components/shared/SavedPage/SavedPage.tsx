@@ -26,7 +26,7 @@ export default function SavedPage({ posts }: any) {
                 />
               );
             } else {
-              return <Skeleton />;
+              return <Skeleton key={item._id} />;
             }
           })}
         </div>
