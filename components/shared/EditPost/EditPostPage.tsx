@@ -165,7 +165,7 @@ export default function EditPostPage({
                 name="tags"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Add Tags (separated by comma " , ")</FormLabel>
+                    <FormLabel>Add Tags</FormLabel>
                     <FormControl>
                       <Input
                         className=" py-7  bg-gray-900  border-transparent focus:border-transparent focus:ring-0 "
