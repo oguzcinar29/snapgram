@@ -1,8 +1,9 @@
 "use client";
 import { savePost } from "@/lib/actions/post.actions";
-import { Save } from "lucide-react";
+import { Bookmark, Save } from "lucide-react";
 import { useSession } from "next-auth/react";
 import React from "react";
+import { toast } from "sonner";
 
 export default function SavePost({ postId, users }: any) {
   const { data: session } = useSession();
@@ -18,6 +19,7 @@ export default function SavePost({ postId, users }: any) {
     try {
       const userId = session?.user?.id;
       const res = await savePost({ postId, userId });
+      toast(res);
     } catch (err) {
       console.log(err);
     }
@@ -25,9 +27,9 @@ export default function SavePost({ postId, users }: any) {
   return (
     <span onClick={handleClick}>
       {findSavedPosts ? (
-        <Save fill="#6d28d9" className="text-white cursor-pointer" />
+        <Bookmark fill="#6d28d9" className="text-[#6d28d9] cursor-pointer" />
       ) : (
-        <Save className="text-[#6d28d9] cursor-pointer" />
+        <Bookmark className="text-[#6d28d9] cursor-pointer" />
       )}
     </span>
   );

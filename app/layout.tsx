@@ -7,7 +7,7 @@ import MobileSideBar from "@/components/shared/MobileSideBar";
 import MobileSideLinks from "@/components/shared/MobileSideLinks";
 import { usePathname } from "next/navigation";
 import { SessionProvider, useSession } from "next-auth/react";
-
+import { Toaster } from "@/components/ui/sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
@@ -40,6 +40,7 @@ export default function RootLayout({
                   <MobileSideLinks />
                 </div>
               </div>
+              <Toaster position="top-right" />
             </div>
           )}
           {pathname.startsWith("/sign") && (

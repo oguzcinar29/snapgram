@@ -7,6 +7,7 @@ import Image from "next/image";
 import LikePost from "./LikePost";
 import SavePost from "./SavePost";
 import Link from "next/link";
+import EditBtn from "./EditBtn";
 
 export type PostShowProps = {
   userId: string;
@@ -27,6 +28,7 @@ export default async function SinglePost({
   location,
   _id,
   imageUrl,
+
   likes,
 }: PostShowProps) {
   const user = await getUserByPostUserId({ userId });
@@ -47,11 +49,7 @@ export default async function SinglePost({
             </span>
           </div>
         </div>
-        <span className="text-[#6d28d9] cursor-pointer">
-          <Link href={`/edit-post/${_id}`}>
-            <Edit />
-          </Link>
-        </span>
+        <EditBtn userId={userId} _id={_id} />
       </div>
       <div className="w-full object-cover h-96 mb-10">
         {/* i was here to do that set image properly  */}

@@ -1,7 +1,14 @@
 import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
-import { HomeIcon, ImagePlus, ImagesIcon, Save, Users } from "lucide-react";
+import {
+  Bookmark,
+  HomeIcon,
+  ImagePlus,
+  ImagesIcon,
+  Save,
+  Users,
+} from "lucide-react";
 
 export default function MobileSideLinks() {
   return (
@@ -38,8 +45,8 @@ export default function MobileSideLinks() {
           variant={"ghost"}
           className="flex hover:bg-[#877eff] w-1/6 hover:text-white"
         >
-          <Link className="flex flex-col items-center  " href="/">
-            <Save className=" hover:text-white text-[#6d28d9e6]" />
+          <Link className="flex flex-col items-center  " href="/saved">
+            <Bookmark className=" hover:text-white text-[#6d28d9e6]" />
             <span>Saved</span>
           </Link>
         </Button>

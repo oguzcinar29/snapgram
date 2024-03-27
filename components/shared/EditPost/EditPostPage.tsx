@@ -22,6 +22,7 @@ import { FileUploader } from "../FileUploader";
 import { useUploadThing } from "@/lib/uploadthing";
 import {
   createPost,
+  deletePost1,
   editPost,
   getAllPosts,
   PostProps,
@@ -96,6 +97,19 @@ export default function EditPostPage({
       console.log(err);
     }
   }
+
+  const deletePost = async (postId: any) => {
+    console.log(postId);
+    try {
+      const res = await deletePost1({ postId });
+      if (res) {
+        router.push("/");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="p-10 w-5/6 max-sm:w-full max-sm:p-5">
       <div className="flex flex-col ">
@@ -178,17 +192,26 @@ export default function EditPostPage({
                   </FormItem>
                 )}
               />
-
-              <Button
-                type="submit"
-                size="lg"
-                disabled={form.formState.isSubmitting}
-                className="button col-span-2 w-full"
-              >
-                {form.formState.isSubmitting
-                  ? "Please wait..."
-                  : `Create Post `}
-              </Button>
+              <div className="flex text-right gap-5 justify-end">
+                <Button
+                  type="submit"
+                  size="lg"
+                  disabled={form.formState.isSubmitting}
+                  className=""
+                >
+                  {form.formState.isSubmitting
+                    ? "Please wait..."
+                    : `Create Post `}
+                </Button>
+                <Button
+                  type="button"
+                  onClick={() => deletePost(_id)}
+                  variant={"destructive"}
+                  size="lg"
+                >
+                  Delete Post
+                </Button>
+              </div>
             </form>
           </Form>
         </div>

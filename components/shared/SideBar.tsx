@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
+  Bookmark,
   HomeIcon,
   ImagePlus,
   ImagesIcon,
@@ -13,25 +14,25 @@ import {
 } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 export default function SideBar() {
   const [hoverLink, setHoverLink] = useState<string>("Home");
+
+  const { data: session } = useSession();
 
   return (
     <section className="px-7 py-9">
       <div className="flex flex-col">
         <Image src="/images/logo.svg" alt="logo" width={175} height={175} />
         <div className="mt-10 flex flex-col gap-5">
-          <div className="flex gap-3">
+          <div className="flex gap-3 items-center">
             <Avatar className="w-16 h-16">
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
-            <div className="flex flex-col  mt-1">
-              <span className="font-black">oguz</span>
-              <span className="text-[#7878a3]">@oguzbaba</span>
-            </div>
+
+            <span className="font-black text-xl">{session?.user?.name}</span>
           </div>
           <div className="flex flex-col gap-6">
             <Button
@@ -89,8 +90,8 @@ export default function SideBar() {
                   : "w-3/4 flex justify-start rounded-sm hover:bg-[#877eff] text-base  hover:text-white"
               }
             >
-              <Link className="flex items-center gap-4" href="/">
-                <Save size={28} className="text-[#6d28d9e6]" />
+              <Link className="flex items-center gap-4" href="/saved">
+                <Bookmark size={28} className="text-[#6d28d9e6]" />
                 <span>Saved</span>
               </Link>
             </Button>

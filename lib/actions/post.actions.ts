@@ -75,6 +75,7 @@ export async function likePost({ userId, postId }: any) {
 }
 
 export async function savePost({ postId, userId }: any) {
+  let temp;
   try {
     await connectToDatabase();
     const user = await User.findById(userId);
@@ -84,11 +85,14 @@ export async function savePost({ postId, userId }: any) {
     console.log(findUserPost);
     if (findUserPost === -1) {
       user.savedPosts.push(postId);
+      temp = "Post has been saved";
     } else {
       user.savedPosts.splice(findUserPost, 1);
+      temp = "Post has been removed from saved page";
     }
     revalidatePath("/");
     await User.findByIdAndUpdate(userId, { ...user });
+    return JSON.parse(JSON.stringify(temp));
   } catch (err) {
     console.log(err);
   }
@@ -122,6 +126,19 @@ export async function editPost({
     });
     revalidatePath("/");
     return JSON.parse(JSON.stringify(post));
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function deletePost1({ postId }: any) {
+  console.log(postId);
+
+  try {
+    await connectToDatabase();
+    await Post.findByIdAndDelete(postId);
+    revalidatePath("/");
+    return JSON.parse(JSON.stringify("deleted"));
   } catch (err) {
     console.log(err);
   }
