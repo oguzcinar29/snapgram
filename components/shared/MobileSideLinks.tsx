@@ -47,7 +47,7 @@ export default function MobileSideLinks() {
         >
           <Link className="flex flex-col items-center  " href="/saved">
             <Bookmark className=" hover:text-white text-[#6d28d9e6]" />
-            <span>Saved</span>
+            <span>Saved2</span>
           </Link>
         </Button>
         <Button

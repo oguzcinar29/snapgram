@@ -98,10 +98,10 @@ export async function savePost({ postId, userId }: any) {
   }
 }
 
-export async function getPostById({ postId }: any) {
+export async function getPostById({ id }: any) {
   try {
     await connectToDatabase();
-    const post = await Post.findById(postId);
+    const post = await Post.findById(id);
     return JSON.parse(JSON.stringify(post));
   } catch (err) {
     console.log(err);
@@ -132,13 +132,22 @@ export async function editPost({
 }
 
 export async function deletePost1({ postId }: any) {
-  console.log(postId);
-
   try {
     await connectToDatabase();
     await Post.findByIdAndDelete(postId);
     revalidatePath("/");
     return JSON.parse(JSON.stringify("deleted"));
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function getAllSavedPost({ userId }: any) {
+  try {
+    await connectToDatabase();
+    const user = await User.findById(userId);
+
+    return JSON.parse(JSON.stringify(user.savedPosts));
   } catch (err) {
     console.log(err);
   }

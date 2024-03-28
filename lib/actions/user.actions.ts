@@ -3,6 +3,8 @@ import { connectToDatabase } from "../database";
 import User from "../database/models/user.model";
 
 export async function getUserByPostUserId({ userId }: any) {
+  console.log(userId);
+
   try {
     await connectToDatabase();
 

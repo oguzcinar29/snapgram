@@ -52,14 +52,15 @@ export default async function SinglePost({
         <EditBtn userId={userId} _id={_id} />
       </div>
       <div className="w-full object-cover h-96 mb-10">
-        {/* i was here to do that set image properly  */}
-        <Image
-          src={imageUrl}
-          alt="post image"
-          width={1000}
-          height={1000}
-          className="w-full min-w-[300px] object-cover h-[400px] rounded-lg"
-        />
+        <Link href={`/posts/${_id}`}>
+          <Image
+            src={imageUrl}
+            alt="post image"
+            width={1000}
+            height={1000}
+            className="w-full min-w-[300px] object-cover h-[400px] rounded-lg"
+          />
+        </Link>
       </div>
       <div className="flex flex-col gap-3">
         <span>{caption}</span>

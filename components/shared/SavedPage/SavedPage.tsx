@@ -1,10 +1,10 @@
-"use client";
 import { Bookmark } from "lucide-react";
 import React from "react";
 import SavedPost from "./SavedPost";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
-export default function SavedPage({ posts }: any) {
+import { useSession } from "next-auth/react";
+import SavedPosts from "./SavedPosts";
+
+export default async function SavedPage({ posts, users }: any) {
   console.log(posts);
 
   return (
@@ -14,22 +14,7 @@ export default function SavedPage({ posts }: any) {
           <Bookmark className="text-[#6d28d9] w-12 h-12" />
           <span className="font-bold">Saved Posts</span>
         </div>
-        <div className="flex flex-wrap gap-5 rounded-lg">
-          {posts.map((item: any) => {
-            console.log(item);
-            if (item) {
-              return (
-                <SavedPost
-                  key={item._id}
-                  img={item.imageUrl}
-                  postId={item._id}
-                />
-              );
-            } else {
-              return <Skeleton key={item._id} />;
-            }
-          })}
-        </div>
+        <SavedPosts posts={posts} users={users} />
       </div>
     </section>
   );
