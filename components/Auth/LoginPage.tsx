@@ -32,9 +32,7 @@ export default function LoginPage() {
   const router = useRouter();
   const [err, setErr] = useState<string>("");
   async function onSubmit(values: z.infer<typeof formSchema3>) {
-    console.log(values);
-    console.log("hey");
-
+    const hey = "12";
     const res = await signIn("credentials", {
       ...values,
       redirect: false,

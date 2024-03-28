@@ -53,11 +53,9 @@ export default async function SinglePost({
       </div>
       <div className="w-full object-cover h-96 mb-10">
         <Link href={`/posts/${_id}`}>
-          <Image
+          <img
             src={imageUrl}
             alt="post image"
-            width={1000}
-            height={1000}
             className="w-full min-w-[300px] object-cover h-[400px] rounded-lg"
           />
         </Link>
