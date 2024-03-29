@@ -1,13 +1,18 @@
 import UpdateProfilePage from "@/components/shared/UpdateProfilePage";
 import { getUserById } from "@/lib/actions/user.actions";
 import { Edit } from "lucide-react";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 import React from "react";
 export const dynamic = "force-dynamic";
 export default async function UpdateProfile({ params }: any) {
   const { id } = params;
   const user = await getUserById({ id });
   console.log(user);
-
+  const session = await getServerSession();
+  if (!session) {
+    redirect("/sign-in");
+  }
   return (
     <div className="p-12  max-sm:p-4">
       <div className="flex gap-3 items-center mb-10">
