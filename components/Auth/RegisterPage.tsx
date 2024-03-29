@@ -31,8 +31,6 @@ export default function RegisterPage() {
   const router = useRouter();
   const [err, setErr] = useState<string>("");
   async function onSubmit(values: z.infer<typeof formSchema2>) {
-    console.log(values);
-
     try {
       const res = await fetch("/api/auth/register", {
         method: "POST",
