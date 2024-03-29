@@ -1,7 +1,8 @@
+"use server";
 import { revalidatePath } from "next/cache";
 import { connectToDatabase } from "../database";
 import User from "../database/models/user.model";
-export const dynamic = "force-dynamic";
+
 export async function getUserByPostUserId({ userId }: any) {
   try {
     await connectToDatabase();

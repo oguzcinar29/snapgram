@@ -1,8 +1,10 @@
+"use server";
+
 import { revalidatePath } from "next/cache";
 import { connectToDatabase } from "../database";
 import Post from "../database/models/post.model";
 import User from "../database/models/user.model";
-export const dynamic = "force-dynamic";
+
 export type PostProps = {
   caption: string;
   imageUrl: string;
