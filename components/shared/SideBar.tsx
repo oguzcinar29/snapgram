@@ -122,8 +122,8 @@ export default function SideBar() {
             >
               <Link
                 onClick={() => {
-                  router.push("/sign-in");
                   signOut();
+                  router.push("/sign-in");
                 }}
                 className="flex items-center gap-4"
                 href="/sign-in"

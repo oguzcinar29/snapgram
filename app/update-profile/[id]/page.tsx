@@ -2,7 +2,7 @@ import UpdateProfilePage from "@/components/shared/UpdateProfilePage";
 import { getUserById } from "@/lib/actions/user.actions";
 import { Edit } from "lucide-react";
 import React from "react";
-
+export const dynamic = "force-dynamic";
 export default async function UpdateProfile({ params }: any) {
   const { id } = params;
   const user = await getUserById({ id });

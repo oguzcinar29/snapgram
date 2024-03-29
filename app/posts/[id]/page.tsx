@@ -2,7 +2,7 @@ import SinglePostPage from "@/components/shared/SinglePostPage";
 import { getPostById } from "@/lib/actions/post.actions";
 import { getAllUsers, getUserByPostUserId } from "@/lib/actions/user.actions";
 import React from "react";
-
+export const dynamic = "force-dynamic";
 export default async function SinglePost({ params }: any) {
   const { id } = params;
 
