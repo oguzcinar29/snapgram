@@ -7,7 +7,7 @@ import { toast } from "sonner";
 
 export default function SavePost({ postId, users }: any) {
   const { data: session } = useSession();
-  const findUser = users.find(
+  const findUser = users?.find(
     (item: any) => item._id.toString() === session?.user?.id
   );
 

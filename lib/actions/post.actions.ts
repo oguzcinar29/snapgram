@@ -61,7 +61,7 @@ export async function likePost({ userId, postId }: any) {
     const findUserLike = post.likes.findIndex(
       (item: any) => item.toString() === userId
     );
-    console.log(findUserLike);
+
     if (findUserLike === -1) {
       post.likes.push(userId);
     } else {
@@ -82,7 +82,7 @@ export async function savePost({ postId, userId }: any) {
     const findUserPost = user.savedPosts.findIndex(
       (item: any) => item.toString() === postId
     );
-    console.log(findUserPost);
+
     if (findUserPost === -1) {
       user.savedPosts.push(postId);
       temp = "Post has been saved";
@@ -98,10 +98,10 @@ export async function savePost({ postId, userId }: any) {
   }
 }
 
-export async function getPostById({ id }: any) {
+export async function getPostById({ postId }: any) {
   try {
     await connectToDatabase();
-    const post = await Post.findById(id);
+    const post = await Post.findById(postId);
     return JSON.parse(JSON.stringify(post));
   } catch (err) {
     console.log(err);
@@ -114,8 +114,6 @@ export async function editPost({
   caption,
   postId,
 }: EditPostProps) {
-  console.log(postId);
-
   try {
     await connectToDatabase();
     const post = await Post.findByIdAndUpdate(postId, {

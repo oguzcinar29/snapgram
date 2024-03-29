@@ -8,6 +8,7 @@ declare module "next-auth" {
   interface Session {
     user: {
       id: string;
+      image: string;
     } & DefaultSession["user"];
   }
 }
@@ -19,6 +20,7 @@ const handler = NextAuth({
         name: {},
         email: {},
         password: {},
+        image: {},
       },
       async authorize(credentials, req) {
         await connectToDatabase();
@@ -35,10 +37,13 @@ const handler = NextAuth({
             user[0].password
           );
           if (isCorrectPass) {
+            console.log(user);
+
             return {
               id: user[0]._id,
               email: user[0].email,
               name: user[0].name,
+              image: user[0].image,
             };
           } else {
             return null;
@@ -53,8 +58,17 @@ const handler = NextAuth({
       user: {
         ...session.user,
         id: token.sub,
+        image: token.picture,
       },
     }),
+    async jwt({ token, trigger, session }) {
+      if (trigger === "update" && session?.name && session?.image) {
+        token.name = session.name;
+        token.picture = session.image;
+      }
+
+      return token;
+    },
   },
   session: {
     strategy: "jwt",

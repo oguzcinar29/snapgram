@@ -38,8 +38,10 @@ export default async function SinglePost({
       <div className="flex items-center justify-between">
         <div className="flex gap-3">
           <Avatar className="w-12 h-12">
-            <AvatarImage src="https://github.com/shadcn.png" />
-            <AvatarFallback>CN</AvatarFallback>
+            <AvatarImage src={user.image} />
+            <AvatarFallback className="bg-slate-300 text-white">
+              {user.name.slice(0, 1)}
+            </AvatarFallback>
           </Avatar>
           <div className="flex flex-col gap-1">
             <span className="font-bold">{user?.name}</span>

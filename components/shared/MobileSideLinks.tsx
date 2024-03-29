@@ -23,20 +23,12 @@ export default function MobileSideLinks() {
             Home
           </Link>
         </Button>
-        <Button
-          variant={"ghost"}
-          className="flex w-1/6 hover:bg-[#877eff] hover:text-white"
-        >
-          <Link className="flex flex-col items-center  " href="/">
-            <ImagesIcon className=" hover:text-white text-[#6d28d9e6]" />
-            <span>Explore</span>
-          </Link>
-        </Button>
+
         <Button
           variant={"ghost"}
           className="flex hover:bg-[#877eff] w-1/6 hover:text-white"
         >
-          <Link className="flex flex-col items-center  " href="/">
+          <Link className="flex flex-col items-center  " href="/all-users">
             <Users className="  hover:text-white text-[#6d28d9e6]" />
             <span>People</span>
           </Link>
@@ -47,7 +39,7 @@ export default function MobileSideLinks() {
         >
           <Link className="flex flex-col items-center  " href="/saved">
             <Bookmark className=" hover:text-white text-[#6d28d9e6]" />
-            <span>Saved2</span>
+            <span>Saved</span>
           </Link>
         </Button>
         <Button

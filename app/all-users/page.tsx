@@ -1,5 +1,13 @@
+import AllUsersPage from "@/components/shared/AllUsersPage";
+import { getAllUsers } from "@/lib/actions/user.actions";
 import React from "react";
 
-export default function AllUsers() {
-  return <div>all users</div>;
+export default async function AllUsers() {
+  const users = await getAllUsers();
+
+  return (
+    <div className="p-10 max-sm:p-4 max-sm:mb-52 ">
+      <AllUsersPage users={users} />
+    </div>
+  );
 }

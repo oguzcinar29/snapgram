@@ -99,7 +99,6 @@ export default function EditPostPage({
   }
 
   const deletePost = async (postId: any) => {
-    console.log(postId);
     try {
       const res = await deletePost1({ postId });
       if (res) {
@@ -192,7 +191,7 @@ export default function EditPostPage({
                   </FormItem>
                 )}
               />
-              <div className="flex text-right gap-5 justify-end">
+              <div className="flex text-right gap-5 justify-end max-sm:justify-between">
                 <Button
                   type="submit"
                   size="lg"
@@ -201,7 +200,7 @@ export default function EditPostPage({
                 >
                   {form.formState.isSubmitting
                     ? "Please wait..."
-                    : `Create Post `}
+                    : `Update Post `}
                 </Button>
                 <Button
                   type="button"

@@ -16,12 +16,12 @@ import { useForm } from "react-hook-form";
 import { formSchema2 } from "@/lib/validator";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function RegisterPage() {
   const form = useForm<z.infer<typeof formSchema2>>({
     resolver: zodResolver(formSchema2),
     defaultValues: {
-      username: "",
       name: "",
       email: "",
       password: "",
@@ -50,79 +50,103 @@ export default function RegisterPage() {
     }
   }
   return (
-    <div className="p-10">
+    <div className="flex pt-20 max-sm:w-full max-sm:justify-center max-sm:items-center ">
       {" "}
-      <div>
-        {err && <span>{err}</span>}
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Name</FormLabel>
-                  <FormControl>
-                    <Input className="text-black" type="text" {...field} />
-                  </FormControl>
-
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="username"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Username</FormLabel>
-                  <FormControl>
-                    <Input className="text-black" type="text" {...field} />
-                  </FormControl>
-
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input className="text-black" type="text" {...field} />
-                  </FormControl>
-
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input className="text-black" type="password" {...field} />
-                  </FormControl>
-
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button
-              type="submit"
-              size="lg"
-              disabled={form.formState.isSubmitting}
-              className="button col-span-2 w-full"
+      <div className="w-1/2 flex flex-col justify-center items-center max-sm:w-full">
+        <div className="flex flex-col gap-5 items-center mb-5">
+          <img src="/images/logo.svg" />
+          <div className="text-center">
+            <h1 className="text-2xl font-black">Create a new account</h1>
+            <p className="text-[#877eff]">
+              To use Snapgram, please enter your details
+            </p>
+          </div>
+        </div>
+        <div className=" w-[420px] max-sm:w-[300px]">
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="flex flex-col gap-5"
             >
-              {form.formState.isSubmitting ? "Please wait..." : `Sign Up `}
-            </Button>
-          </form>
-        </Form>
+              {err && <span>{err}</span>}
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Name</FormLabel>
+                    <FormControl>
+                      <Input
+                        className="  bg-gray-900  border-transparent focus:border-transparent focus:ring-0 "
+                        type="text"
+                        {...field}
+                      />
+                    </FormControl>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input
+                        className="  bg-gray-900  border-transparent focus:border-transparent focus:ring-0 "
+                        type="text"
+                        {...field}
+                      />
+                    </FormControl>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <Input
+                        className="  bg-gray-900  border-transparent focus:border-transparent focus:ring-0 "
+                        type="password"
+                        {...field}
+                      />
+                    </FormControl>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button
+                type="submit"
+                size="lg"
+                disabled={form.formState.isSubmitting}
+                className="button col-span-2 w-full"
+              >
+                {form.formState.isSubmitting ? "Please wait..." : `Sign In `}
+              </Button>
+            </form>
+            <div className="text-center mt-5">
+              <span>
+                Do you have an account ?{" "}
+                <Link className="text-[#6d28d9]" href="/sign-in">
+                  Sign In
+                </Link>
+              </span>
+            </div>
+          </Form>
+        </div>
       </div>
+      <img
+        className="hidden max-sm:hidden lg:block h-screen w-1/2 object-cover bg-no-repeat"
+        src="/images/side-img.svg"
+      />
     </div>
   );
 }

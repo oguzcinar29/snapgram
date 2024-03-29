@@ -6,7 +6,6 @@ export const formSchema = z.object({
   tags: z.string(),
 });
 export const formSchema2 = z.object({
-  username: z.string().min(2).max(50),
   name: z.string().min(3).max(20),
   email: z.string(),
   password: z.string(),

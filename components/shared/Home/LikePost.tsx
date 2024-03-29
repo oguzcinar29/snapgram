@@ -16,7 +16,6 @@ export default function LikePost({ postId, likes }: LikePostProps) {
   );
 
   const handleClick = async () => {
-    console.log(postId);
     const userId = session?.user?.id;
 
     try {

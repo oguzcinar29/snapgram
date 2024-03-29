@@ -6,7 +6,7 @@ export default async function HomePosts() {
   const posts = await getAllPosts();
 
   return (
-    <div className="flex flex-col gap-10 mt-6">
+    <div className="flex flex-col gap-10 max-sm:gap-16 mt-6">
       {posts.map((item: any) => {
         return <SinglePost key={item._id} {...item} />;
       })}

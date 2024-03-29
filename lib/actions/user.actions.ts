@@ -1,10 +1,9 @@
 "use server";
+import { revalidatePath } from "next/cache";
 import { connectToDatabase } from "../database";
 import User from "../database/models/user.model";
 
 export async function getUserByPostUserId({ userId }: any) {
-  console.log(userId);
-
   try {
     await connectToDatabase();
 
@@ -19,6 +18,39 @@ export async function getAllUsers() {
     await connectToDatabase();
     const users = await User.find();
     return JSON.parse(JSON.stringify(users));
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function getUserById({ id }: any) {
+  try {
+    await connectToDatabase();
+    const user = await User.findById(id);
+    return JSON.parse(JSON.stringify(user));
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+type UpdateUserProps = {
+  name: string;
+  bio: string;
+  image: string;
+  userId: string;
+};
+export async function updateUser({
+  name,
+  bio,
+  image,
+  userId,
+}: UpdateUserProps) {
+  try {
+    await connectToDatabase();
+    const user = await User.findByIdAndUpdate(userId, { bio, name, image });
+    const findUser = await User.findById(userId);
+    revalidatePath("/");
+    return JSON.parse(JSON.stringify(findUser));
   } catch (err) {
     console.log(err);
   }

@@ -70,7 +70,7 @@ export default function CreatePostPage() {
         imageUrl: uploadedImageUrl,
         userId: userId,
       });
-      console.log(res);
+
       if (res) {
         form.reset();
         setPosts((prevArr) => [...prevArr, res]);
