@@ -129,7 +129,7 @@ export default function RegisterPage() {
                 disabled={form.formState.isSubmitting}
                 className="button col-span-2 w-full"
               >
-                {form.formState.isSubmitting ? "Please wait..." : `Sign In `}
+                {form.formState.isSubmitting ? "Please wait..." : `Sign Up `}
               </Button>
             </form>
             <div className="text-center mt-5">
