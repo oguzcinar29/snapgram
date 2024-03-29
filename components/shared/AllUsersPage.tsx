@@ -3,6 +3,7 @@ import SingleUser from "./SingleUser";
 import { Users } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
+export const dynamic = "force-dynamic";
 export default function AllUsersPage({ users }: any) {
   return (
     <div className="">
