@@ -50,7 +50,7 @@ export default function RegisterPage() {
     }
   }
   return (
-    <div className="flex pt-20 max-sm:w-full max-sm:justify-center max-sm:items-center ">
+    <div className="flex max-sm:pt-20 max-sm:w-full max-sm:justify-center max-sm:items-center ">
       {" "}
       <div className="w-1/2 flex flex-col justify-center items-center max-sm:w-full">
         <div className="flex flex-col gap-5 items-center mb-5">
